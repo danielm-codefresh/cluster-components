@@ -10,7 +10,7 @@ spec:
   project: default
   destination:
     namespace: ingress-nginx
-    name: arn:aws:eks:us-east-2:336151728602:cluster/managed-test
+    name: arn-aws-eks-us-east-2-336151728602-cluster-managed-test
   source:
     repoURL: https://github.com/nightmar39/cluster-components.git
     targetRevision: main
