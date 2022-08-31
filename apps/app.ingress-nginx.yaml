@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  labels:
+    app: ingress-nginx
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: ingress-nginx
+    name: arn:aws:eks:us-east-2:336151728602:cluster/managed-test
+  source:
+    repoURL: https://github.com/nightmar39/cluster-components.git
+    targetRevision: main
+    path: ./ingress-nginx/
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
